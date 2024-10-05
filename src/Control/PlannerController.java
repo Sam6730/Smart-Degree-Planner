@@ -2,6 +2,7 @@ package Control;
 
 import Model.Core.Course;
 import Model.Core.DegreePlan;
+import Model.Core.Major;
 import Model.Core.Student;
 import Model.Helpers.ElectiveRecommender;
 import Model.Helpers.InterestMatcher;
@@ -24,7 +25,7 @@ public class PlannerController {
         this.electiveRecommender = new ElectiveRecommender();
     }
 
-    public void updateMajor(String major) {
+    public void updateMajor(Major major) {
         student.setMajor(major);
         degreePlan.generatePlan(student);
     }

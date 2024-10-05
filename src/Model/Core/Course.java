@@ -1,16 +1,13 @@
 package Model.Core;
 
+import java.util.List;
+
 public class Course {
     private String courseCode;
     private String name;
     private String description;
     private int credits;
-    private String[] prerequisites;
-    private String category; // core or elective
-
-    public boolean isElective() {
-        return "elective".equalsIgnoreCase(category);
-    }
+    private List<Course> prerequisites;
 
     public boolean meetsPrerequisites(Student student) {
         // Check if student meets the prerequisites

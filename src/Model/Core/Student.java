@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Student {
     private String name;
-    private String studentID;
+    private String username;
     private int yearOfStudy;
     private boolean decidedMajor;
     private Major major;
@@ -13,13 +13,13 @@ public class Student {
     private List<Course> suggestedCourses;
     private List<String> interests;
 
-    public Student(String name, String studentID, int yearOfStudy) {
+    public Student(String name, String username, int yearOfStudy) {
         this.name = name;
-        this.studentID = studentID;
+        this.username = username;
         this.yearOfStudy = yearOfStudy;
     }
 
-    public void setMajor(String major) {
+    public void setMajor(Major major) {
         this.major = major;
     }
 
