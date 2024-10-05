@@ -1,5 +1,8 @@
 package Model.Core;
 
+import Model.Helpers.ElectiveRecommender;
+import Model.Helpers.InterestMatcher;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,5 +56,15 @@ public class Student {
         coursesCompleted.add(course);
     }
 
-    // Getters and Setters for fields
+    public List<Course> getCoursesTaken() {
+        return coursesTaken;
+    }
+
+    public Major getMajor() {
+        return major;
+    }
+
+    public List<String> getInterests() {
+        return interests;
+    }
 }

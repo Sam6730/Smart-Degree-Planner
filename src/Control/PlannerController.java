@@ -27,7 +27,7 @@ public class PlannerController {
 
     public void updateMajor(Major major) {
         student.setMajor(major);
-        degreePlan.generatePlan(student);
+        degreePlan.generatePlan();
     }
 
     public List<Course> getSuggestedCourses() {
@@ -36,7 +36,7 @@ public class PlannerController {
 
     public void addInterest(String interest) {
         student.addInterest(interest);
-        degreePlan.addElectivesBasedOnInterest(student);
+        degreePlan.addElectivesBasedOnInterest();
     }
 
     // Additional methods for controlling the degree planning logic

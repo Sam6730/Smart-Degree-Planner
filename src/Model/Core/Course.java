@@ -30,5 +30,13 @@ public class Course {
         return credits;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getCourseCode() {
+        return courseCode;
+    }
+
     // Getters and Setters
 }

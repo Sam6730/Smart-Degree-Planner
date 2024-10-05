@@ -33,5 +33,9 @@ public class DegreePlan {
         }
     }
 
+    public Student getStudent() {
+        return student;
+    }
+
     // Getters and Setters
 }
