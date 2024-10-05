@@ -1,0 +1,255 @@
+{
+  "major": {
+    "name": "Computer Science",
+    "required_courses": [
+      "CPSC110",
+      "CPSC121",
+      "CPSC210",
+      "CPSC213",
+      "CPSC221",
+      "CPSC310",
+      "CPSC313",
+      "CPSC320"
+    ],
+    "electives": [
+      "CPSC100",
+      "CPSC103",
+      "CPSC107",
+      "CPSC203",
+      "CPSC259",
+      "CPSC261",
+      "CPSC302",
+      "CPSC303",
+      "CPSC330",
+      "CPSC340",
+      "CPSC344",
+      "CPSC311",
+      "CPSC312",
+      "CPSC317",
+      "CPSC319",
+      "CPSC322",
+      "CPSC314",
+      "CPSC404",
+      "CPSC421",
+      "CPSC420",
+      "CPSC445",
+      "CPSC427",
+      "CPSC425",
+      "CPSC426",
+      "CPSC422",
+      "CPSC430",
+      "CPSC415",
+      "CPSC416",
+      "CPSC410",
+      "CPSC411",
+      "CPSC414",
+      "CPSC418",
+      "CPSC416",
+      "CPSC444",
+      "CPSC406"
+    ]
+  },
+  "course_relationships": {
+    "CPSC110": {
+      "pre-requisites": []
+    },
+    "CPSC121": {
+      "pre-requisites": []
+    },
+    "CPSC210": {
+      "pre-requisites": [
+        "CPSC121"
+      ]
+    },
+    "CPSC213": {
+      "pre-requisites": [
+        "CPSC210"
+      ]
+    },
+    "CPSC221": {
+      "pre-requisites": [
+        "CPSC121"
+      ]
+    },
+    "CPSC310": {
+      "pre-requisites": [
+        "CPSC210",
+        "CPSC221"
+      ]
+    },
+    "CPSC320": {
+      "pre-requisites": [
+        "CPSC221"
+      ]
+    },
+    "CPSC313": {
+      "pre-requisites": [
+        "CPSC213"
+      ]
+    },
+    "CPSC100": {
+      "pre-requisites": []
+    },
+    "CPSC103": {
+      "pre-requisites": []
+    },
+    "CPSC107": {
+      "pre-requisites": []
+    },
+    "CPSC203": {
+      "pre-requisites": [
+        "CPSC107"
+      ]
+    },
+    "CPSC259": {
+      "pre-requisites": [
+        "APSC160"
+      ]
+    },
+    "CPSC261": {
+      "pre-requisites": [
+        "CPSC213"
+      ]
+    },
+    "CPSC302": {
+      "pre-requisites": [
+        "CPSC203"
+      ]
+    },
+    "CPSC303": {
+      "pre-requisites": [
+        "CPSC203"
+      ]
+    },
+    "CPSC330": {
+      "pre-requisites": [
+        "CPSC203"
+      ]
+    },
+    "CPSC340": {
+      "pre-requisites": [
+        "CPSC320"
+      ]
+    },
+    "CPSC344": {
+      "pre-requisites": [
+        "CPSC310"
+      ]
+    },
+    "CPSC311": {
+      "pre-requisites": [
+        "CPSC310"
+      ]
+    },
+    "CPSC312": {
+      "pre-requisites": [
+        "CPSC310"
+      ]
+    },
+    "CPSC317": {
+      "pre-requisites": [
+        "CPSC310"
+      ]
+    },
+    "CPSC319": {
+      "pre-requisites": [
+        "CPSC310"
+      ]
+    },
+    "CPSC322": {
+      "pre-requisites": [
+        "CPSC210"
+      ]
+    },
+    "CPSC314": {
+      "pre-requisites": [
+        "CPSC210"
+      ]
+    },
+    "CPSC404": {
+      "pre-requisites": [
+        "CPSC320"
+      ]
+    },
+    "CPSC421": {
+      "pre-requisites": [
+        "CPSC320"
+      ]
+    },
+    "CPSC420": {
+      "pre-requisites": [
+        "CPSC320"
+      ]
+    },
+    "CPSC445": {
+      "pre-requisites": [
+        "CPSC320"
+      ]
+    },
+    "CPSC427": {
+      "pre-requisites": [
+        "CPSC320"
+      ]
+    },
+    "CPSC425": {
+      "pre-requisites": [
+        "CPSC320"
+      ]
+    },
+    "CPSC426": {
+      "pre-requisites": [
+        "CPSC320"
+      ]
+    },
+    "CPSC422": {
+      "pre-requisites": [
+        "CPSC322"
+      ]
+    },
+    "CPSC430": {
+      "pre-requisites": [
+        "CPSC310"
+      ]
+    },
+    "CPSC415": {
+      "pre-requisites": [
+        "CPSC313"
+      ]
+    },
+    "CPSC416": {
+      "pre-requisites": [
+        "CPSC313"
+      ]
+    },
+    "CPSC410": {
+      "pre-requisites": [
+        "CPSC313"
+      ]
+    },
+    "CPSC411": {
+      "pre-requisites": [
+        "CPSC313"
+      ]
+    },
+    "CPSC414": {
+      "pre-requisites": [
+        "CPSC313"
+      ]
+    },
+    "CPSC418": {
+      "pre-requisites": [
+        "CPSC313"
+      ]
+    },
+    "CPSC444": {
+      "pre-requisites": [
+        "CPSC344"
+      ]
+    },
+    "CPSC406": {
+      "pre-requisites": [
+        "CPSC344"
+      ]
+    }
+  }
+}
