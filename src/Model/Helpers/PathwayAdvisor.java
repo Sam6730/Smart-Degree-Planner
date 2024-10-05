@@ -1,8 +1,8 @@
-package Helpers;
+package Model.Helpers;
 
-import Core.Course;
-import Core.Major;
-import Core.Student;
+import Model.Core.Course;
+import Model.Core.Major;
+import Model.Core.Student;
 
 import java.util.List;
 import java.util.Map;

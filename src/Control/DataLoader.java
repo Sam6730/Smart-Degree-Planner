@@ -1,8 +1,8 @@
-package Utility;
+package Control;
 
-import Core.Course;
-import Core.Major;
-import Core.Student;
+import Model.Core.Course;
+import Model.Core.Major;
+import Model.Core.Student;
 
 import java.util.List;
 

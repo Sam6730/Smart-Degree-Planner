@@ -1,6 +1,6 @@
-package Helpers;
+package Model.Helpers;
 
-import Core.Major;
+import Model.Core.Major;
 
 import java.util.List;
 import java.util.Map;

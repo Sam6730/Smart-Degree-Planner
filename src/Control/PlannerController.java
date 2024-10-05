@@ -1,11 +1,11 @@
-package Utility;
+package Control;
 
-import Core.Course;
-import Core.DegreePlan;
-import Core.Student;
-import Helpers.ElectiveRecommender;
-import Helpers.InterestMatcher;
-import Helpers.PathwayAdvisor;
+import Model.Core.Course;
+import Model.Core.DegreePlan;
+import Model.Core.Student;
+import Model.Helpers.ElectiveRecommender;
+import Model.Helpers.InterestMatcher;
+import Model.Helpers.PathwayAdvisor;
 
 import java.util.List;
 

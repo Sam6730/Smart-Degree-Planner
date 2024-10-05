@@ -1,4 +1,4 @@
-package Core;
+package Model.Core;
 
 public class Course {
     private String courseCode;
