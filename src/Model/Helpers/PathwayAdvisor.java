@@ -15,7 +15,10 @@ public class PathwayAdvisor {
     }
 
     public List<Course> suggestPathway(Student student) {
-        // Logic to suggest a pathway for a student
+        Major major = student.getMajor();
+        if (major != null) {
+            return getPathwayForMajor(major);
+        }
         return null;
     }
 

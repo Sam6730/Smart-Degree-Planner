@@ -1,5 +1,6 @@
 package Model.Core;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Student {
@@ -8,10 +9,10 @@ public class Student {
     private int yearOfStudy;
     private boolean decidedMajor;
     private Major major;
-    private List<Course> coursesTaken;
-    private List<Course> coursesCompleted;
-    private List<Course> suggestedCourses;
-    private List<String> interests;
+    private List<Course> coursesTaken = new ArrayList<>();
+    private List<Course> coursesCompleted = new ArrayList<>();
+    private List<Course> suggestedCourses = new ArrayList<>();
+    private List<String> interests = new ArrayList<>();
 
     public Student(String name, String username, int yearOfStudy) {
         this.name = name;
@@ -21,21 +22,36 @@ public class Student {
 
     public void setMajor(Major major) {
         this.major = major;
+        this.decidedMajor = true;
     }
 
     public void addInterest(String interest) {
-        interests.add(interest);
+        if (!interests.contains(interest)) {
+            interests.add(interest);
+        }
     }
 
     public List<Course> suggestCourses() {
-        // Suggest courses logic
-        return suggestedCourses;
+        ElectiveRecommender recommender = new ElectiveRecommender();
+        return recommender.getElectivesBasedOnInterest(this);
     }
 
-    public List<String> suggestMajors() {
-        // Suggest majors logic
-        return null;
+    public List<Major> suggestMajors() {
+        InterestMatcher matcher = new InterestMatcher();
+        List<Major> suggestedMajors = new ArrayList<>();
+        for (String interest : interests) {
+            suggestedMajors.addAll(matcher.getSuggestedMajors(interest));
+        }
+        return suggestedMajors;
     }
 
-    // Getters and Setters
+    public void addCourseTaken(Course course) {
+        coursesTaken.add(course);
+    }
+
+    public void addCourseCompleted(Course course) {
+        coursesCompleted.add(course);
+    }
+
+    // Getters and Setters for fields
 }

@@ -7,8 +7,10 @@ public class Major {
     private List<Course> requiredCourses;
     private List<Course> electives;
 
-    public Major(String name) {
+    public Major(String name, List<Course> requiredCourses, List<Course> electives) {
         this.name = name;
+        this.requiredCourses = requiredCourses;
+        this.electives = electives;
     }
 
     public List<Course> getRequiredCourses() {
@@ -16,10 +18,9 @@ public class Major {
     }
 
     public List<Course> getElectiveSuggestions(List<String> interests) {
-        // Return electives based on interests
+        // Suggest electives based on interests
         return electives;
     }
 
     // Getters and Setters
-
 }

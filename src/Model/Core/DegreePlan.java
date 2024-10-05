@@ -11,16 +11,26 @@ public class DegreePlan {
         this.student = student;
     }
 
-    public void generatePlan(Student student) {
-        // Logic to generate plan
+    public void generatePlan() {
+        // Add required courses from the student's major
+        Major major = student.getMajor();
+        if (major != null) {
+            mandatoryCourses = major.getRequiredCourses();
+        }
+
+        // Suggest electives based on interests
+        addElectivesBasedOnInterest();
     }
 
-    public void addElectivesBasedOnInterest(Student student) {
-        // Logic to add electives based on interests
+    public void addElectivesBasedOnInterest() {
+        suggestedCourses = student.suggestCourses();
     }
 
-    public void updatePlanBasedOnCoursesTaken(Student student) {
-        // Logic to update plan
+    public void updatePlanBasedOnCoursesTaken() {
+        for (Course course : student.getCoursesTaken()) {
+            mandatoryCourses.remove(course);
+            suggestedCourses.remove(course);
+        }
     }
 
     // Getters and Setters
