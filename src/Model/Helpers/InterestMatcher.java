@@ -1,5 +1,6 @@
 package Model.Helpers;
 
+import Model.Core.Course;
 import Model.Core.Major;
 
 import java.util.ArrayList;
@@ -14,12 +15,44 @@ public class InterestMatcher {
     public InterestMatcher() {
         interestToMajors = new HashMap<>();
 
-        // Initialize the majors
-        Major psychology = new Major("Psychology", new ArrayList<>(), new ArrayList<>());
-        Major sauder = new Major("Sauder", new ArrayList<>(), new ArrayList<>());
-        Major computerScience = new Major("Computer Science", new ArrayList<>(), new ArrayList<>());
-        Major bucs = new Major("BUCS", new ArrayList<>(), new ArrayList<>());
-        Major mechanicalEngineering = new Major("Mechanical Engineering", new ArrayList<>(), new ArrayList<>());
+        // Initialize the courses for each major
+        List<Course> csRequiredCourses = new ArrayList<>();
+        csRequiredCourses.add(new Course("CPSC110", new ArrayList<>()));
+        csRequiredCourses.add(new Course("CPSC121", new ArrayList<>()));
+        csRequiredCourses.add(new Course("CPSC210", new ArrayList<>()));
+        csRequiredCourses.add(new Course("CPSC213", new ArrayList<>()));
+        csRequiredCourses.add(new Course("CPSC221", new ArrayList<>()));
+        csRequiredCourses.add(new Course("CPSC310", new ArrayList<>()));
+        csRequiredCourses.add(new Course("CPSC313", new ArrayList<>()));
+        csRequiredCourses.add(new Course("CPSC320", new ArrayList<>()));
+
+        List<Course> sauderRequiredCourses = new ArrayList<>();
+        sauderRequiredCourses.add(new Course("COMM101", new ArrayList<>()));
+        sauderRequiredCourses.add(new Course("COMM105", new ArrayList<>()));
+        sauderRequiredCourses.add(new Course("ECON101", new ArrayList<>()));
+        sauderRequiredCourses.add(new Course("ECON102", new ArrayList<>()));
+
+        List<Course> bucsRequiredCourses = new ArrayList<>(csRequiredCourses);  // BUCS shares with CS
+        bucsRequiredCourses.add(new Course("COMM105", new ArrayList<>()));
+        bucsRequiredCourses.add(new Course("CPSC110", new ArrayList<>()));
+        bucsRequiredCourses.add(new Course("COMM196", new ArrayList<>()));
+        bucsRequiredCourses.add(new Course("MATH100", new ArrayList<>()));
+        bucsRequiredCourses.add(new Course("ECON101", new ArrayList<>()));
+
+        List<Course> psychologyRequiredCourses = new ArrayList<>();
+        psychologyRequiredCourses.add(new Course("PSYC101", new ArrayList<>()));
+        psychologyRequiredCourses.add(new Course("PSYC102", new ArrayList<>()));
+
+        List<Course> meRequiredCourses = new ArrayList<>();
+        meRequiredCourses.add(new Course("MECH101", new ArrayList<>()));
+        meRequiredCourses.add(new Course("MECH102", new ArrayList<>()));
+
+        // Initialize the majors with the required courses
+        Major psychology = new Major("Psychology", psychologyRequiredCourses, new ArrayList<>());
+        Major sauder = new Major("Sauder", sauderRequiredCourses, new ArrayList<>());
+        Major computerScience = new Major("Computer Science", csRequiredCourses, new ArrayList<>());
+        Major bucs = new Major("BUCS", bucsRequiredCourses, new ArrayList<>());
+        Major mechanicalEngineering = new Major("Mechanical Engineering", meRequiredCourses, new ArrayList<>());
 
         // Map interests to corresponding majors
         interestToMajors.put("Meditation", List.of(psychology));

@@ -72,23 +72,23 @@ public class DegreePlannerApp {
         String selection = input.nextLine();
         switch (selection) {
             case "1":
-                major = new Major("Psychology", new ArrayList<>(), new ArrayList<>());
+                major = interestMatcher.getSuggestedMajors("Meditation").get(0);
                 break;
             case "2":
-                major = new Major("Sauder", new ArrayList<>(), new ArrayList<>());
+                major = interestMatcher.getSuggestedMajors("Golfing").get(0);
                 break;
             case "3":
-                major = new Major("Computer Science", new ArrayList<>(), new ArrayList<>());
+                major = interestMatcher.getSuggestedMajors("Not taking showers").get(0);
                 break;
             case "4":
-                major = new Major("BUCS", new ArrayList<>(), new ArrayList<>());
+                major = interestMatcher.getSuggestedMajors("Tech startups").get(0);
                 break;
             case "5":
-                major = new Major("Mechanical Engineering", new ArrayList<>(), new ArrayList<>());
+                major = interestMatcher.getSuggestedMajors("Building F1 cars").get(0);
                 break;
             default:
                 System.out.println("Invalid selection, defaulting to Computer Science.");
-                major = new Major("Computer Science", new ArrayList<>(), new ArrayList<>());
+                major = interestMatcher.getSuggestedMajors("Not taking showers").get(0);
         }
     }
 
