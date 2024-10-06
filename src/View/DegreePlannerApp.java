@@ -3,16 +3,15 @@ package View;
 import Model.Core.Course;
 import Model.Core.Major;
 import Model.Core.Student;
-import persistence.JsonReader;
 import Model.Helpers.InterestMatcher;
+import persistence.JsonReader;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 public class DegreePlannerApp {
-    private static final String JSON_STORE = "./data/computerScience.json";
+    private static final String JSON_STORE = "./data/cpsc_course_data_with_major.json";
     private JsonReader jsonReader;
     private Scanner input;
     private Major major;
@@ -31,7 +30,7 @@ public class DegreePlannerApp {
         boolean majorDecided = askIfMajorDecided();
 
         if (majorDecided) {
-            assignComputerScienceMajor();
+            askForMajorSelection();
         } else {
             askForInterestsAndSuggest();
         }
@@ -39,11 +38,7 @@ public class DegreePlannerApp {
         createStudent();
 
         // If major was decided, display required courses
-        if (majorDecided) {
-            displayRequiredCourses();
-        } else {
-            suggestElectiveCourses();
-        }
+        displayRequiredCourses();
 
         System.out.println("\nThank you for using the Degree Planner App!");
     }
@@ -65,13 +60,35 @@ public class DegreePlannerApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: loads Computer Science major from the JSON file and assigns it to the student
-    private void assignComputerScienceMajor() {
-        System.out.println("You have selected Computer Science as your major.");
-        try {
-            major = jsonReader.read();
-        } catch (IOException e) {
-            System.out.println("Error loading major data.");
+    // EFFECTS: prompts the user to select a major from the given list
+    private void askForMajorSelection() {
+        System.out.println("Please select your major from the following options:");
+        System.out.println("1. Psychology");
+        System.out.println("2. Sauder");
+        System.out.println("3. Computer Science");
+        System.out.println("4. BUCS");
+        System.out.println("5. Mechanical Engineering");
+
+        String selection = input.nextLine();
+        switch (selection) {
+            case "1":
+                major = new Major("Psychology", new ArrayList<>(), new ArrayList<>());
+                break;
+            case "2":
+                major = new Major("Sauder", new ArrayList<>(), new ArrayList<>());
+                break;
+            case "3":
+                major = new Major("Computer Science", new ArrayList<>(), new ArrayList<>());
+                break;
+            case "4":
+                major = new Major("BUCS", new ArrayList<>(), new ArrayList<>());
+                break;
+            case "5":
+                major = new Major("Mechanical Engineering", new ArrayList<>(), new ArrayList<>());
+                break;
+            default:
+                System.out.println("Invalid selection, defaulting to Computer Science.");
+                major = new Major("Computer Science", new ArrayList<>(), new ArrayList<>());
         }
     }
 
@@ -79,15 +96,15 @@ public class DegreePlannerApp {
     private void askForInterestsAndSuggest() {
         System.out.println("You haven't selected a major yet. Let's gather your interests.");
         System.out.println("Please select from the following interests (separated by commas):");
-        System.out.println("1. Artificial Intelligence (AI)");
-        System.out.println("2. Software Development");
-        System.out.println("3. Cybersecurity");
-        System.out.println("4. Data Science");
-        System.out.println("5. Human-Computer Interaction (HCI)");
+        System.out.println("1. Meditation");
+        System.out.println("2. Golfing");
+        System.out.println("3. Not taking showers");
+        System.out.println("4. Tech startups");
+        System.out.println("5. Building F1 cars");
 
         String selectedInterests = input.nextLine();
         List<String> interests = parseInterests(selectedInterests);
-        suggestMajorsAndCourses(interests);
+        suggestMajorsAndPromptSelection(interests);
     }
 
     // EFFECTS: Parses the user input for interests and returns a list of interests
@@ -98,19 +115,19 @@ public class DegreePlannerApp {
         for (String option : options) {
             switch (option.trim()) {
                 case "1":
-                    interests.add("Artificial Intelligence");
+                    interests.add("Meditation");
                     break;
                 case "2":
-                    interests.add("Software Development");
+                    interests.add("Golfing");
                     break;
                 case "3":
-                    interests.add("Cybersecurity");
+                    interests.add("Not taking showers");
                     break;
                 case "4":
-                    interests.add("Data Science");
+                    interests.add("Tech startups");
                     break;
                 case "5":
-                    interests.add("Human-Computer Interaction");
+                    interests.add("Building F1 cars");
                     break;
                 default:
                     System.out.println("Invalid option: " + option);
@@ -120,8 +137,8 @@ public class DegreePlannerApp {
         return interests;
     }
 
-    // EFFECTS: Suggests majors and courses using InterestMatcher based on the student's interests
-    private void suggestMajorsAndCourses(List<String> interests) {
+    // EFFECTS: Suggests majors based on the student's interests and prompts the user to select one
+    private void suggestMajorsAndPromptSelection(List<String> interests) {
         System.out.println("\nBased on your interests, we recommend the following majors:");
 
         // Use the InterestMatcher to suggest relevant majors
@@ -131,12 +148,24 @@ public class DegreePlannerApp {
         }
 
         // Display the suggested majors
-        for (Major suggestedMajor : suggestedMajors) {
-            System.out.println(suggestedMajor.getName());
+        if (suggestedMajors.isEmpty()) {
+            System.out.println("No major found based on your interests.");
+            return;
+        } else {
+            for (int i = 0; i < suggestedMajors.size(); i++) {
+                System.out.println((i + 1) + ". " + suggestedMajors.get(i).getName());
+            }
         }
 
-        // For now, default to Computer Science and load its courses
-        assignComputerScienceMajor();
+        // Prompt the user to select a major from the suggestions
+        System.out.println("\nPlease select a major from the list above (enter the number):");
+        int selection = Integer.parseInt(input.nextLine());
+        if (selection > 0 && selection <= suggestedMajors.size()) {
+            major = suggestedMajors.get(selection - 1);
+        } else {
+            System.out.println("Invalid selection, defaulting to Computer Science.");
+            major = new Major("Computer Science", new ArrayList<>(), new ArrayList<>());
+        }
     }
 
     // MODIFIES: this
@@ -158,18 +187,10 @@ public class DegreePlannerApp {
         }
     }
 
-    // EFFECTS: Displays the required courses for the Computer Science major
+    // EFFECTS: Displays the required courses for the selected major
     private void displayRequiredCourses() {
-        System.out.println("\nAs a Computer Science major, here are your required courses:");
+        System.out.println("\nAs a " + major.getName() + " major, here are your required courses:");
         for (Course course : major.getRequiredCourses()) {
-            System.out.println(course.getCourseCode());
-        }
-    }
-
-    // EFFECTS: Suggests elective courses based on the student's interests
-    private void suggestElectiveCourses() {
-        System.out.println("\nBased on your interests, here are some elective courses you may like:");
-        for (Course course : major.getElectives()) {
             System.out.println(course.getCourseCode());
         }
     }
