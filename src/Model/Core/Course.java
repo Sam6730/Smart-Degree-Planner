@@ -9,7 +9,7 @@ public class Course {
     private int credits;
     private List<Course> prerequisites;
 
-    public Course(String courseCode, String name, int credits, List<Course> prerequisites) {
+    public Course(String courseCode, List<Course> prerequisites) {
         this.courseCode = courseCode;
         this.name = name;
         this.credits = credits;

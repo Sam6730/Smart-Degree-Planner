@@ -22,5 +22,11 @@ public class Major {
         return electives;
     }
 
-    // Getters and Setters
+    public String getName() {
+        return name;
+    }
+
+    public List<Course> getElectives() {
+        return electives;
+    }
 }
