@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.Scanner;
 
 public class DegreePlannerApp {
-    private static final String JSON_STORE = "./data/cpsc_course_data_with_major.json";
+    private static final String JSON_STORE = "./data/computerScience.json";
     private JsonReader jsonReader;
     private Scanner input;
     private Major major;
