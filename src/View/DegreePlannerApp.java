@@ -36,7 +36,7 @@ public class DegreePlannerApp {
             displayRequiredCoursesInterest();
         }
 
-        System.out.println("\nThank you for using the Degree Planner App!");
+        System.out.println("\nThank you for using Daygree");
     }
 
     private void setup() {
