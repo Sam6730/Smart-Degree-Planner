@@ -38,6 +38,4 @@ public class PlannerController {
         student.addInterest(interest);
         degreePlan.addElectivesBasedOnInterest();
     }
-
-    // Additional methods for controlling the degree planning logic
 }

@@ -18,49 +18,40 @@ public class DegreePlannerApp {
     private Student student;
     private InterestMatcher interestMatcher;
 
-    // EFFECTS: runs the degree planner application
     public DegreePlannerApp() {
         runPlanner();
     }
 
-    // MODIFIES: this
-    // EFFECTS: processes user input
     private void runPlanner() {
         setup();
         boolean majorDecided = askIfMajorDecided();
 
         if (majorDecided) {
             askForMajorSelection();
+            createStudent();
+            displayRequiredCourses();
         } else {
             askForInterestsAndSuggest();
+            createStudent();
+            displayRequiredCoursesInterest();
         }
-
-        createStudent();
-
-        // If major was decided, display required courses
-        displayRequiredCourses();
 
         System.out.println("\nThank you for using the Degree Planner App!");
     }
 
-    // MODIFIES: this
-    // EFFECTS: initializes the input, json reader and interest matcher
     private void setup() {
         input = new Scanner(System.in);
         input.useDelimiter("\n");
         jsonReader = new JsonReader(JSON_STORE);
-        interestMatcher = new InterestMatcher(); // Initialize InterestMatcher
+        interestMatcher = new InterestMatcher();
     }
 
-    // EFFECTS: Asks if the user has decided on a major, returns true if decided, false otherwise
     private boolean askIfMajorDecided() {
         System.out.println("Have you decided your major? (yes/no): ");
         String command = input.nextLine().toLowerCase();
         return command.equals("yes");
     }
 
-    // MODIFIES: this
-    // EFFECTS: prompts the user to select a major from the given list
     private void askForMajorSelection() {
         System.out.println("Please select your major from the following options:");
         System.out.println("1. Psychology");
@@ -89,7 +80,6 @@ public class DegreePlannerApp {
         }
     }
 
-    // EFFECTS: Asks user for interests if the major is undecided and suggests courses/majors
     private void askForInterestsAndSuggest() {
         System.out.println("You haven't selected a major yet. Let's gather your interests.");
         System.out.println("Please select from the following interests (separated by commas):");
@@ -104,7 +94,6 @@ public class DegreePlannerApp {
         suggestMajorsAndPromptSelection(interests);
     }
 
-    // EFFECTS: Parses the user input for interests and returns a list of interests
     private List<String> parseInterests(String input) {
         String[] options = input.split(",");
         List<String> interests = new ArrayList<>();
@@ -134,7 +123,6 @@ public class DegreePlannerApp {
         return interests;
     }
 
-    // EFFECTS: Suggests majors based on the student's interests and prompts the user to select one
     private void suggestMajorsAndPromptSelection(List<String> interests) {
         System.out.println("\nBased on your interests, we recommend the following majors:");
 
@@ -154,7 +142,7 @@ public class DegreePlannerApp {
             }
         }
 
-        // Prompt the user to select a major from the suggestions
+        // Prompt the user to select a major
         System.out.println("\nPlease select a major from the list above (enter the number):");
         int selection = Integer.parseInt(input.nextLine());
         if (selection > 0 && selection <= suggestedMajors.size()) {
@@ -165,8 +153,6 @@ public class DegreePlannerApp {
         }
     }
 
-    // MODIFIES: this
-    // EFFECTS: asks for student's details and creates a Student object
     private void createStudent() {
         System.out.println("Enter your name: ");
         String name = input.nextLine();
@@ -184,9 +170,15 @@ public class DegreePlannerApp {
         }
     }
 
-    // EFFECTS: Displays the required courses for the selected major
     private void displayRequiredCourses() {
         System.out.println("\nAs a " + major.getName() + " major, here are your required courses:");
+        for (Course course : major.getRequiredCourses()) {
+            System.out.println(course.getCourseCode());
+        }
+    }
+
+    private void displayRequiredCoursesInterest() {
+        System.out.println("With the magic of the smart suggester, here are your recommended courses:");
         for (Course course : major.getRequiredCourses()) {
             System.out.println(course.getCourseCode());
         }

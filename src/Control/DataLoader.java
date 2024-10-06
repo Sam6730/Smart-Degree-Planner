@@ -8,7 +8,6 @@ import java.util.List;
 
 public class DataLoader {
     public List<Major> loadMajorsFromDB() {
-        // Logic to load majors from a database
         return null;
     }
 
