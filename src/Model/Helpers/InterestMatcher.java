@@ -32,7 +32,7 @@ public class InterestMatcher {
         sauderRequiredCourses.add(new Course("ECON101", new ArrayList<>()));
         sauderRequiredCourses.add(new Course("ECON102", new ArrayList<>()));
 
-        List<Course> bucsRequiredCourses = new ArrayList<>(csRequiredCourses);  // BUCS shares with CS
+        List<Course> bucsRequiredCourses = new ArrayList<>();  // BUCS shares with CS
         bucsRequiredCourses.add(new Course("COMM105", new ArrayList<>()));
         bucsRequiredCourses.add(new Course("CPSC110", new ArrayList<>()));
         bucsRequiredCourses.add(new Course("COMM196", new ArrayList<>()));

@@ -86,9 +86,6 @@ public class DegreePlannerApp {
             case "5":
                 major = interestMatcher.getSuggestedMajors("Building F1 cars").get(0);
                 break;
-            default:
-                System.out.println("Invalid selection, defaulting to Computer Science.");
-                major = interestMatcher.getSuggestedMajors("Not taking showers").get(0);
         }
     }
 
